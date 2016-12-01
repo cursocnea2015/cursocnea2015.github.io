@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="CNEA">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+    <title>Becas Aprender Haciendo</title>
+
+    <link href="css/cnea.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/cnea.js"></script>
+
+</head>
+
+<body ng-controller="cursoController">
+
+<!-- Navbar -->
+<div class="fondoDerecha hidden-sm hidden-xs" ng-include="'templates/navbar.html'"></div>
+<div class="fondoCentrado hidden-lg hidden-md" ng-include="'templates/navbar.html'"></div>
+<!-- /navbar -->
+
+<!-- Page container -->
+<div class="page-container">
+
+    <div ng-include="'templates/sidebar.html'"></div>
+
+    <div class="page-content row">
+        <!-- Page header -->
+        <span class="top"></span>
+        <div id="placeHolder" style="height: 130px"></div>
+
+        <div class="hidden-xs col-sm-1">
+            <div class="flechaNav">
+                <span ng-show="!esPrimeraPagina()" class="icon icon-arrow-left" ng-click="paginaAnterior()"></span>
+            </div>
+        </div>
+
+        <div id="columnaCentral" class="col-xs-12 col-sm-10">
+
+            <div id="contenidoPagina" style="z-index: 9; background-color: whitesmoke" class="texto" ng-view=""></div>
+
+            <div id="botoneraInferior">
+                <audio ng-show="paginaActual().tieneAudio" style="width: 100%" id="audio" controls>
+                    <source type="audio/mpeg">
+                </audio>
+
+                <div class="hidden-xs" style="z-index: 8;" ng-include="'templates/paginador.html'"></div>
+                <div class="hidden-sm hidden-md hidden-lg paginadorChico">
+                    <div style="z-index: 8" ng-include="'templates/paginador.html'"></div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /page content -->
+
+        <div class="hidden-xs col-sm-1">
+            <div class="flechaNav">
+                <span ng-show="!esUltimaPagina() && !esPrimeraPagina()" class="icon icon-arrow-right2" ng-click="paginaSiguiente()"></span>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+<!-- /page container -->
+
+</body>
+</html>
